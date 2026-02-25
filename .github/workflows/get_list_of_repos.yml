@@ -12,6 +12,16 @@ jobs:
     steps:
       - name: Checkout your code
         uses: actions/checkout@v4
+      
+      - name: Create a new file
+        run: echo "get_repos_list.sh" >> #!/bin/bash
+        run: echo "get_repos_list.sh" >> TARGET="philips-software"
+        run: echo "get_repos_list.sh" >> echo "Listing all repositories for: $TARGET"
+        run: echo "get_repos_list.sh" >> echo "------------------------------------
+        run: echo "get_repos_list.sh" >> gh repo list "$TARGET" --limit 200 --json name --jq '.[].name' > repo_list.txt
+        run: echo "get_repos_list.sh" >> cat repo_list.txt
+        run: echo "get_repos_list.sh" >> echo "-------------------------------------"
+
 
       - name: Make script executable
         run: chmod +x get_repos_list.sh
