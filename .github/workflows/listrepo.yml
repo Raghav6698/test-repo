@@ -1,0 +1,24 @@
+name: List Philips Software Repos
+
+on:
+  workflow_dispatch: 
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout your code
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x listrepo.sh
+        
+      - name: Execute Script
+        env:
+          
+           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+        run: ./listrepo.sh
