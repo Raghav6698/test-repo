@@ -21,6 +21,7 @@ jobs:
         run: echo "get_repos_list.sh" >> gh repo list "$TARGET" --limit 200 --json name --jq '.[].name' > repo_list.txt
         run: echo "get_repos_list.sh" >> cat repo_list.txt
         run: echo "get_repos_list.sh" >> echo "-------------------------------------"
+        run: mv get_repos_list.sh /home/runner/work/_temp/
 
 
       - name: Make script executable
