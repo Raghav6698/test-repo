@@ -19,6 +19,6 @@ jobs:
       - name: Execute Script
         env:
           
-           GH_TOKEN: ${{ secrets.test }}
+           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         run: ./listrepo.sh
