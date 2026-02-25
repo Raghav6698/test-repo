@@ -13,9 +13,6 @@ jobs:
       - name: Checkout your code
         uses: actions/checkout@v4
 
-      - name: changing directory
-        run: cd /home/runner/work/test-repo/test-repo
-      
       - name: Make script executable
         run: chmod +x get_repos_list.sh
         
