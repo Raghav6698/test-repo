@@ -1,0 +1,23 @@
+name: List Philips Software Repositories
+
+on:
+  workflow_dispatch:          # Run manually from the Actions tab
+  schedule:
+    - cron: "0 8 * * 1"      # Also runs every Monday at 08:00 UTC
+
+jobs:
+  list-repos:
+    name: List philips-software repos
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x .github/scripts/list_philips_repos.sh
+
+      - name: List all Philips Software repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # Auto-provided by Actions
+        run: .github/scripts/list_philips_repos.sh
