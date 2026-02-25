@@ -8,7 +8,7 @@
 
 set -euo pipefail
 
-ORG="philips-software"
+ORG="Philips Software"
 API_BASE="https://api.github.com/orgs/${ORG}/repos"
 PER_PAGE=100
 PAGE=1
