@@ -13,5 +13,5 @@ jobs:
         run: |
           USERNAME=Philips Software
           curl -s "https://api.github.com/users/${USERNAME}/repos?per_page=100" \
-            | jq -r '.[].name'#!/bin/bash
+            | jq -r '.[].name'
 
