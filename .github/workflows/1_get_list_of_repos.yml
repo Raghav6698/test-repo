@@ -1,5 +1,5 @@
 name: List Philips Software Repos
-
+run-name: pipeline 1
 on:
   workflow_dispatch: 
 jobs:
