@@ -19,7 +19,7 @@ jobs:
       - name: Execute Script
         env:
           
-           GH_TOKEN: ${{ secrets.test }}
+           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         run: /home/runner/work/test-repo/test-repo/get_repos_list.sh
 
