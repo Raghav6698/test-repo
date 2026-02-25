@@ -15,12 +15,7 @@ jobs:
 
       - name: Make script executable
         run: chmod +x get_repos_list.sh
-
-      - name: renaming the .sh
-        run: mv /home/runner/work/_temp/0b28f159-35ab-4abf-9c63-63b94d93a8a3.sh get_repos_list.sh
         
-    
-
       - name: Execute Script
         env:
           
