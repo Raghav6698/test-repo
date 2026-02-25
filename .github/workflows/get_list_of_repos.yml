@@ -24,6 +24,6 @@ jobs:
           
            GH_TOKEN: ${{ secrets.test }}
         
-        run: ./get_repos_list.sh
+        run: /home/runner/work/test-repo/test-repo/get_repos_list.sh
 
       
