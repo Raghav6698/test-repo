@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET="philips-software"
+TARGET="Philips Software"
 
 echo "Listing all repositories for: $TARGET"
 echo "-------------------------------------"
