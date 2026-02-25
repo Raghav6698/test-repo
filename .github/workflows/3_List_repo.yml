@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: List public repos of a user
         run: |
-          USERNAME=Philips Software
+          USERNAME="Philips Software"
           curl -s "https://api.github.com/users/${USERNAME}/repos?per_page=100" \
             | jq -r '.[].name'
 
