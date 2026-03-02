@@ -1,0 +1,22 @@
+name: List Repositories
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  list-repos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: List repositories in philips-software
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ORG="philips-software"
+          API_URL="https://api.github.com/orgs/$ORG/repos"
+          
+          echo "Fetching repositories for organization: $ORG"
+          curl -s -H "Authorization: token $GITHUB_TOKEN" $API_URL | jq -r '.[].name'
