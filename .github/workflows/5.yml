@@ -1,4 +1,4 @@
-name: List Repositories
+name: List All Repositories
 
 on:
   workflow_dispatch: # Allows manual triggering of the workflow
@@ -11,12 +11,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: List repositories in philips-software
+      - name: List all repositories in philips-software
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ORG="philips-software"
           API_URL="https://api.github.com/orgs/$ORG/repos"
+          PAGE=1
           
-          echo "Fetching repositories for organization: $ORG"
-          curl -s -H "Authorization: token $GITHUB_TOKEN" $API_URL | jq -r '.[].name'
+          echo "Fetching all repositories for organization: $ORG"
+          while true; do
+            RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "$API_URL?per_page=100&page=$PAGE")
+            REPO_NAMES=$(echo "$RESPONSE" | jq -r '.[].name')
+            
+            if [ -z "$REPO_NAMES" ]; then
+              break
+            fi
+            
+            echo "$REPO_NAMES"
+            PAGE=$((PAGE + 1))
+          done
